@@ -12,7 +12,6 @@ create table movimentacoes (
     data_movimentacao timestamp default current_timestamp
 );
 
--- funcao para atualizar o saldo da conta
 create or replace function fn_atualiza_saldo_conta()
 returns trigger as $$
 begin
@@ -31,7 +30,6 @@ begin
 end;
 $$ language plpgsql;
 
--- trigger vinculada
 create trigger trg_atualiza_saldo
 after insert on movimentacoes
 for each row
