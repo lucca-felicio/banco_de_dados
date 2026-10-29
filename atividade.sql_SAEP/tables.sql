@@ -43,6 +43,3 @@ create table historico_tarefas (
 	descricao varchar(50) not null,
 	data_hora timestamp default current_timestamp
 ); 
-
-
-teste
