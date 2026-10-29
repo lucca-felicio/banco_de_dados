@@ -1,0 +1,43 @@
+<mxfile host="app.diagrams.net" agent="ChatGPT">
+  <diagram id="der-simples" name="Página-1">
+    <mxGraphModel dx="1414" dy="793" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="750" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="usuarios" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontSize=12;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" value="USUARIOS&#xa;--------------------&#xa;PK id_usuario&#xa;nome&#xa;email (UNIQUE)&#xa;senha_hash" vertex="1">
+          <mxGeometry height="120" width="220" x="40" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="colaboradores" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontSize=12;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" value="COLABORADORES&#xa;--------------------&#xa;PK id_colaborador&#xa;FK id_usuario&#xa;nome&#xa;email&#xa;ativo" vertex="1">
+          <mxGeometry height="140" width="230" x="360" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="projetos" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontSize=12;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" value="PROJETOS&#xa;--------------------&#xa;PK id_projeto&#xa;nome&#xa;descricao&#xa;data_inicio" vertex="1">
+          <mxGeometry height="120" width="220" x="720" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="categorias" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontSize=12;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" value="CATEGORIAS&#xa;--------------------&#xa;PK id_categoria&#xa;nome" vertex="1">
+          <mxGeometry height="100" width="220" x="40" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="tarefas" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontSize=12;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" value="TAREFAS&#xa;--------------------&#xa;PK id_tarefa&#xa;FK id_projeto&#xa;FK id_colaborador&#xa;FK id_categoria&#xa;titulo&#xa;prazo&#xa;status&#xa;data_criacao" vertex="1">
+          <mxGeometry height="180" width="260" x="360" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="historico" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontSize=12;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" value="HISTORICO_TAREFAS&#xa;--------------------&#xa;PK id_historico&#xa;FK id_tarefa&#xa;acao&#xa;data_hora&#xa;descricao" vertex="1">
+          <mxGeometry height="140" width="250" x="720" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="usuarios" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=none;startArrow=none;fontSize=11;" target="colaboradores" value="1 : 1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="projetos" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=none;startArrow=none;fontSize=11;" target="tarefas" value="1 : N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="colaboradores" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=none;startArrow=none;fontSize=11;" target="tarefas" value="1 : N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="categorias" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=none;startArrow=none;fontSize=11;" target="tarefas" value="1 : N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="tarefas" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;endArrow=none;startArrow=none;fontSize=11;" target="historico" value="1 : N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
