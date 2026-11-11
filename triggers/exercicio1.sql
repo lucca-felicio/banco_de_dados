@@ -1,20 +1,22 @@
-CREATE TABLE estoque (
-    id SERIAL PRIMARY KEY,
-    nome_item VARCHAR(100) NOT NULL,
-    quantidade INT NOT NULL DEFAULT 0
-);
-
 CREATE OR REPLACE FUNCTION fn_valida_estoque_minimo()
 RETURNS TRIGGER AS $$
 BEGIN
     IF NEW.quantidade < 0 THEN
-        RAISE EXCEPTION 'operação cancelada! O item "%" não pode ter estoque negativo (Tentativa: % unidade(s)).',
+        RAISE EXCEPTION 'Quantidade invalida para o item "%". Valor: %',
             NEW.nome_item, NEW.quantidade;
     END IF;
 
-    return new;
-end;
+    RETURN NEW;
+END;
 $$ LANGUAGE plpgsql;
+
+
+create table estoque (
+    id serial primary key,
+    nome_item varchar(100) not null,
+    quantidade int default 0 not null
+);
+
 
 CREATE TRIGGER trg_valida_estoque
 BEFORE INSERT OR UPDATE ON estoque
